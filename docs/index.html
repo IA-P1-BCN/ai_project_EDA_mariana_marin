@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Qué dicen los datos antes de decidir</title>
+  <style>
+    :root { color-scheme: light; }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; height: 100%; }
+    body {
+      font-family: Georgia, "Iowan Old Style", Palatino, serif;
+      background: #e4ebf1;
+      color: #10212b;
+    }
+    .slide {
+      display: none;
+      min-height: 100vh;
+      padding: 8vh 10vw 12vh;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .slide.activa { display: flex; }
+    h1 { font-size: clamp(2.4rem, 6vw, 4.6rem); line-height: 1.05; font-weight: 500; margin: 0; max-width: 16ch; }
+    h2 { font-size: clamp(2rem, 4.5vw, 3.4rem); line-height: 1.12; font-weight: 500; margin: 0 0 1.2rem; max-width: 22ch; }
+    p { font-size: clamp(1.15rem, 2vw, 1.45rem); line-height: 1.45; max-width: 38rem; }
+    .grande { font-size: clamp(3rem, 8vw, 6rem); line-height: 0.95; margin: 0.2rem 0; color: #9f1239; }
+    .pie { font-family: "Avenir Next", "Segoe UI", sans-serif; font-size: 0.95rem; color: #57534e; }
+    .nota { display: none; font-family: "Avenir Next", "Segoe UI", sans-serif; font-size: 1rem; background: #fff; border-left: 4px solid #9f1239; padding: 0.8rem 1rem; max-width: 40rem; }
+    body.notas .nota { display: block; margin-top: 2rem; }
+    nav {
+      position: fixed; bottom: 0; left: 0; right: 0;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 0.8rem 1.2rem;
+      font-family: "Avenir Next", "Segoe UI", sans-serif;
+      font-size: 0.85rem;
+      background: rgba(228, 235, 241, 0.94);
+    }
+    button, a.boton {
+      font: inherit; background: #10212b; color: #e4ebf1;
+      border: 0; padding: 0.45rem 0.8rem; text-decoration: none; cursor: pointer;
+    }
+    button.claro { background: transparent; color: #10212b; }
+    .dos { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; max-width: 50rem; }
+    @media (max-width: 700px) { .dos { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <section class="slide activa" data-minuto="0:00">
+    <h1>Qué dicen los datos antes de decidir</h1>
+    <p>COVID-19 en Estados Unidos, hasta el 7 de marzo de 2021.</p>
+    <p class="nota">Abrir con la pregunta del cliente: antes de actuar, qué historia hay en un archivo que nadie ha mirado con calma.</p>
+  </section>
+
+  <section class="slide" data-minuto="0:30">
+    <h2>El archivo suma 515.151 muertes.</h2>
+    <p>Un parte por estado y por día, del 13 de enero de 2020 al 7 de marzo de 2021. En los 50 estados y el Distrito de Columbia son 156 muertes por cada 100.000 habitantes.</p>
+    <p class="nota">No leer la ficha técnica. Una cifra, y decir que el resto de la charla explica por qué esa cifra sola engaña.</p>
+  </section>
+
+  <section class="slide" data-minuto="1:15">
+    <h2>California suma 54.124 muertes.</h2>
+    <p class="grande">137,5</p>
+    <p>por cada 100.000 habitantes, por debajo de la media del país, porque el total crece con la población del estado.</p>
+    <p class="nota">Pausa en el 137,5. Es el giro: el primero de la lista bruta no es el más golpeado.</p>
+  </section>
+
+  <section class="slide" data-minuto="2:00">
+    <div class="dos">
+      <div>
+        <p class="pie">Nueva Jersey</p>
+        <p class="grande">265,4</p>
+        <p class="pie">23.574 muertes</p>
+      </div>
+      <div>
+        <p class="pie">Hawái</p>
+        <p class="grande">31,6</p>
+        <p class="pie">el extremo bajo</p>
+      </div>
+    </div>
+    <p>En las dos listas de diez solo coinciden Nueva York y Nueva Jersey.</p>
+    <p class="nota">Si piden otro nombre, Rhode Island y Massachusetts son las dos siguientes.</p>
+  </section>
+
+  <section class="slide" data-minuto="2:50">
+    <h2>Enero de 2021 fue el peor mes del país.</h2>
+    <p>95.387 muertes nuevas, frente a 55.315 en abril de 2020. El 13 de enero la media de siete días llega a 3.335 muertes al día.</p>
+    <p>En el Noreste, el pico por habitante es el 16 de abril de 2020. En invierno las cuatro regiones están altas a la vez.</p>
+    <p class="nota">Las dos frases son verdad a la vez. No elegir una. Primavera: golpe local. Invierno: golpe nacional.</p>
+  </section>
+
+  <section class="slide" data-minuto="3:40">
+    <h2>Utah detectó muchos casos y murió poco. Nueva Jersey, al revés.</h2>
+    <p>Utah: unos 11.500 casos por 100.000 habitantes, y murieron 5 de cada mil casos detectados. Nueva Jersey: 29 de cada mil.</p>
+    <p>Este archivo no trae la edad. La diferencia queda señalada, y no se explica de más.</p>
+    <p class="nota">Si preguntan por qué, la respuesta es: con estos datos no se sabe. Eso también es un resultado.</p>
+  </section>
+
+  <section class="slide" data-minuto="4:20">
+    <h2>Tres cosas que no sirven para decidir.</h2>
+    <p>Una columna vacía en más del 80% de las filas. El parte de un lunes: el fin de semana el dato llega tarde. El total de un estado grande, sin dividir por su población.</p>
+    <p class="nota">Una frase cada una. No abrir el informe de calidad salvo que lo pidan.</p>
+  </section>
+
+  <section class="slide" data-minuto="4:45">
+    <h2>Para comparar estados, divide por habitantes y lee la media de siete días.</h2>
+    <p>El invierno de 2021 tensó al país entero. La primavera de 2020 golpeó al Noreste.</p>
+    <p class="pie"><a href="explorar.html">Abrir el tablero y filtrar estados</a></p>
+    <p class="nota">Cerrar en esas dos frases. Ofrecer el tablero si quieren ver un estado concreto.</p>
+  </section>
+
+  <nav>
+    <button type="button" class="claro" id="notas">Guion</button>
+    <span id="contador">0:00 · 1 / 8</span>
+    <span>
+      <button type="button" id="atras">Atrás</button>
+      <button type="button" id="sigue">Siguiente</button>
+    </span>
+  </nav>
+  <script>
+    const slides = [...document.querySelectorAll(".slide")];
+    let i = 0;
+    const contador = document.getElementById("contador");
+    function ir(n) {
+      i = Math.max(0, Math.min(slides.length - 1, n));
+      slides.forEach((s, k) => s.classList.toggle("activa", k === i));
+      const minuto = slides[i].dataset.minuto || "";
+      contador.textContent = minuto + " · " + (i + 1) + " / " + slides.length;
+    }
+    document.getElementById("sigue").onclick = () => ir(i + 1);
+    document.getElementById("atras").onclick = () => ir(i - 1);
+    document.getElementById("notas").onclick = () => document.body.classList.toggle("notas");
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "ArrowRight" || e.key === " ") { e.preventDefault(); ir(i + 1); }
+      if (e.key === "ArrowLeft") ir(i - 1);
+      if (e.key === "n" || e.key === "N") document.body.classList.toggle("notas");
+    });
+  </script>
+</body>
+</html>
