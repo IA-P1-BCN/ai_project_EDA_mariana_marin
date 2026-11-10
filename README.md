@@ -1,6 +1,6 @@
 # COVID-19 en Estados Unidos: análisis exploratorio
 
-Repositorio de la entrega: https://github.com/marianamarinf/ai_project_EDA
+Repositorio de la entrega: https://github.com/marianamarinflor622/ai_project_EDA
 
 Histórico diario del [COVID Tracking Project](https://covidtracking.com/) (13 de enero de 2020 – 7 de marzo de 2021), cruzado con la población estatal del censo de EE. UU. a 1 de julio de 2020.
 
