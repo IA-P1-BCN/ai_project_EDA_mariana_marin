@@ -61,7 +61,7 @@ reports/figuras/                gráficos del notebook
 
 ## Cómo está subido
 
-`main` es la entrega integrada. El trabajo entra por ramas, cada una con un pull request:
+La rama que abre el repositorio es `chore/entorno`. Ahí está la entrega ya integrada. El trabajo entró por ramas, cada una con un pull request:
 
 | Rama | Qué entra |
 | --- | --- |
