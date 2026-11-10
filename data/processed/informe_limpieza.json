@@ -1,0 +1,43 @@
+{
+  "metadato": [
+    "hash",
+    "grade",
+    "dataQualityGrade",
+    "commercialScore",
+    "negativeRegularScore",
+    "negativeScore",
+    "positiveScore",
+    "score",
+    "lastUpdateEt",
+    "dateModified",
+    "checkTimeEt",
+    "dateChecked"
+  ],
+  "casi_vacias": [
+    "pending",
+    "inIcuCumulative",
+    "onVentilatorCumulative",
+    "hospitalizedDischarged",
+    "positiveTestsAntibody",
+    "negativeTestsAntibody",
+    "totalTestsPeopleAntibody",
+    "positiveTestsPeopleAntibody",
+    "negativeTestsPeopleAntibody",
+    "totalTestsPeopleAntigen",
+    "positiveTestsPeopleAntigen",
+    "totalTestsAntigen",
+    "positiveTestsAntigen"
+  ],
+  "duplicadas": [
+    "hospitalized"
+  ],
+  "filas_entrada": 20780,
+  "filas_salida": 20780,
+  "columnas_salida": 48,
+  "sin_poblacion": [
+    "AS",
+    "GU",
+    "MP",
+    "VI"
+  ]
+}
