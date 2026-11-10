@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Explorar muertes por habitante</title>
+  <style>
+    :root { color-scheme: light; }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Avenir Next", "Segoe UI", sans-serif;
+      background: #e4ebf1;
+      color: #10212b;
+    }
+    header, main { padding: 1.2rem 6vw 2rem; }
+    a { color: #9f1239; }
+    h1 { font-family: Georgia, Palatino, serif; font-weight: 500; font-size: 2rem; margin: 0.2rem 0; }
+    .regiones label { margin-right: 1rem; }
+    .cifra { font-family: Georgia, Palatino, serif; font-size: 3rem; color: #9f1239; margin: 0.4rem 0; }
+    .fila { display: grid; grid-template-columns: 11rem 1fr 3.2rem; gap: 0.6rem; align-items: center; margin: 0.28rem 0; }
+    .barra { height: 0.7rem; background: #9f1239; }
+    .muted { color: #57534e; }
+    svg { width: 100%; height: 220px; background: #fff; }
+    .leyenda span { display: inline-flex; align-items: center; margin-right: 1rem; font-size: 0.9rem; }
+    .punto { width: 0.7rem; height: 0.7rem; display: inline-block; margin-right: 0.35rem; }
+  </style>
+</head>
+<body>
+  <header>
+    <p><a href="index.html">Volver a la presentación</a></p>
+    <h1>Muertes por 100.000 habitantes</h1>
+    <p class="muted">Cierre del 7 de marzo de 2021. Marca una región para ver solo esos estados.</p>
+    <div class="regiones" id="regiones"></div>
+  </header>
+  <main>
+    <p id="frase"></p>
+    <p class="cifra" id="cifra"></p>
+    <div id="barras"></div>
+    <h2>Muertes nuevas por 100.000, media de 7 días</h2>
+    <div class="leyenda" id="leyenda"></div>
+    <svg id="serie" viewBox="0 0 640 220" role="img" aria-label="Serie por región"></svg>
+  </main>
+  <script src="datos.js"></script>
+  <script>
+    const COLORES = {
+      "Noreste": "#b45309",
+      "Medio Oeste": "#0369a1",
+      "Sur": "#be123c",
+      "Oeste": "#0f766e",
+      "Puerto Rico": "#6b7280"
+    };
+    const regiones = [...new Set(DATOS.foto.map((f) => f.region))];
+    const caja = document.getElementById("regiones");
+    const activas = new Set(regiones.filter((r) => r !== "Puerto Rico"));
+    regiones.forEach((region) => {
+      const id = "r-" + region;
+      const label = document.createElement("label");
+      label.innerHTML = `<input type="checkbox" id="${id}" ${activas.has(region) ? "checked" : ""}> ${region}`;
+      label.querySelector("input").addEventListener("change", (e) => {
+        if (e.target.checked) activas.add(region); else activas.delete(region);
+        pintar();
+      });
+      caja.appendChild(label);
+    });
+
+    function pintar() {
+      const foto = DATOS.foto.filter((f) => activas.has(f.region));
+      const muertes = foto.reduce((s, f) => s + f.muertes, 0);
+      const poblacion = foto.reduce((s, f) => s + f.poblacion, 0);
+      const tasa = poblacion ? (muertes / poblacion) * 100000 : 0;
+      const lider = foto[0];
+      document.getElementById("cifra").textContent = tasa.toFixed(1).replace(".", ",") ;
+      document.getElementById("frase").textContent = lider
+        ? `${lider.nombre} lidera esta selección, con ${lider.tasa.toFixed(1).replace(".", ",")} por 100.000 (${lider.muertes.toLocaleString("es-ES")} muertes).`
+        : "Elige al menos una región.";
+      const max = Math.max(...foto.slice(0, 12).map((f) => f.tasa), 1);
+      document.getElementById("barras").innerHTML = foto.slice(0, 12).map((f) => `
+        <div class="fila">
+          <span>${f.nombre}</span>
+          <div class="barra" style="width:${(f.tasa / max) * 100}%; background:${COLORES[f.region]}"></div>
+          <span>${f.tasa.toFixed(0)}</span>
+        </div>`).join("");
+      lineas();
+    }
+
+    function lineas() {
+      const svg = document.getElementById("serie");
+      const nombres = [...activas].filter((r) => DATOS.regiones[r]);
+      const series = nombres.map((nombre) => DATOS.regiones[nombre]);
+      if (!series.length) { svg.innerHTML = ""; return; }
+      const fechas = series[0].map((p) => p.fecha);
+      const valores = series.flatMap((s) => s.map((p) => p.tasa));
+      const max = Math.max(...valores, 0.1);
+      const w = 640, h = 220, pad = 16;
+      const x = (i) => pad + (i / (fechas.length - 1)) * (w - pad * 2);
+      const y = (v) => h - pad - (v / max) * (h - pad * 2);
+      svg.innerHTML = series.map((serie, k) => {
+        const d = serie.map((p, i) => `${i ? "L" : "M"}${x(i).toFixed(1)},${y(p.tasa).toFixed(1)}`).join(" ");
+        return `<path d="${d}" fill="none" stroke="${COLORES[nombres[k]]}" stroke-width="2"/>`;
+      }).join("");
+      document.getElementById("leyenda").innerHTML = nombres.map((n) =>
+        `<span><i class="punto" style="background:${COLORES[n]}"></i>${n}</span>`).join("");
+    }
+    pintar();
+  </script>
+</body>
+</html>

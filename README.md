@@ -37,6 +37,17 @@ jupyter notebook notebooks/eda_covid_usa.ipynb
 
 El notebook se puede abrir también desde `notebooks/`: localiza la raíz del proyecto solo. Hay que ejecutarlo de arriba abajo. Las figuras quedan en `reports/figuras/`.
 
+## Dashboard
+
+```bash
+streamlit run dashboard/app.py
+```
+
+Filtra por región, jurisdicción y fechas. La presentación de cinco minutos y el tablero para abrir en el navegador, sin instalar nada, están publicados en:
+
+- https://marianamarinflor622.github.io/ai_project_EDA/
+- https://marianamarinflor622.github.io/ai_project_EDA/explorar.html
+
 ## Pipeline y tests
 
 ```bash
@@ -53,10 +64,14 @@ notebooks/eda_covid_usa.ipynb   análisis, con texto entre el código
 src/limpieza.py                 funciones de limpieza y variables nuevas
 src/cargar.py                   descarga y lectura de las dos fuentes
 scripts/pipeline.py             mismo recorrido, un comando
-tests/test_limpieza.py          pruebas de esas funciones
+scripts/exportar_web.py         regenera los datos de la página pública
+dashboard/app.py                dashboard de Streamlit
+tests/                      pruebas de limpieza y del cierre nacional
 reports/informe_ejecutivo.md    conclusiones para un público no técnico
 reports/calidad_datos.md        qué faltaba, qué se corrigió, qué queda abierto
 reports/figuras/                gráficos del notebook
+docs/index.html                 presentación de 5 minutos
+docs/explorar.html              tablero para abrir en el navegador
 ```
 
 ## Cómo está subido
@@ -68,6 +83,7 @@ La rama que abre el repositorio es `chore/entorno`. Ahí está la entrega ya int
 | `feat/carga-y-limpieza` | CSV de las dos fuentes, funciones de carga y limpieza, tests y pipeline |
 | `feat/analisis-exploratorio` | Notebook del EDA, ejecutable de arriba abajo |
 | `docs/informe` | Informe ejecutivo, calidad de los datos, figuras y este README |
+| `feat/entrega-completa` | Dashboard, presentación de 5 minutos y página pública |
 
 No se sube el entorno virtual (`.venv`). Quien clone el repo lo crea con las instrucciones de instalación.
 
@@ -75,4 +91,4 @@ No se sube el entorno virtual (`.venv`). Quien clone el repo lo crea con las ins
 
 El notebook recorre el nivel esencial, el medio y el avanzado del enunciado: estructura, nulos, tipos, atípicos, `groupby` y tabla dinámica, variables nuevas, correlación, series temporales, tasas por habitante, segunda fuente, datos de mala calidad, escala logarítmica, media móvil, comparación por región, Plotly y funciones reutilizables.
 
-Además hay tests, un pipeline de un comando y un informe de calidad. No hay dashboard.
+El nivel experto añade el dashboard de Streamlit, el pipeline de un comando, los tests, el informe de calidad, la presentación de cinco minutos y la página pública.
