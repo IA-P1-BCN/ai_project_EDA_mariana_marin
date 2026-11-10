@@ -1,0 +1,59 @@
+{
+  "filas": 20780,
+  "columnas_origen": 56,
+  "jurisdicciones": 56,
+  "fecha_min": "2020-01-13",
+  "fecha_max": "2021-03-07",
+  "muertes": 515151,
+  "muertes_ultimo_dia": 515151,
+  "casos_incremento": 28756393,
+  "casos_ultimo_dia": 28756489,
+  "abril_2020": 55315,
+  "enero_2021": 95387,
+  "pico_muertes_fecha": "2021-01-13",
+  "pico_muertes_mm7": 3335.4,
+  "pico_casos_fecha": "2021-01-11",
+  "pico_casos_mm7": 247111.1,
+  "pico_region": {
+    "Noreste": "2020-04-16",
+    "Medio Oeste": "2021-02-13",
+    "Sur": "2021-01-28",
+    "Oeste": "2021-01-28"
+  },
+  "nj_100k": 265.4,
+  "ny_100k": 201.8,
+  "ca_100k": 137.5,
+  "ca_muertes": 54124,
+  "hi_100k": 31.6,
+  "ut_casos_100k": 11534.3,
+  "ut_letalidad": 0.0053,
+  "nj_letalidad": 0.029,
+  "corr_bruta": 0.97,
+  "corr_tasa": 0.63,
+  "corr_letalidad": -0.09,
+  "top10_comun": [
+    "NJ",
+    "NY"
+  ],
+  "columnas_casi_vacias": [
+    "pending",
+    "inIcuCumulative",
+    "onVentilatorCumulative",
+    "hospitalizedDischarged",
+    "positiveTestsAntibody",
+    "negativeTestsAntibody",
+    "totalTestsPeopleAntibody",
+    "positiveTestsPeopleAntibody",
+    "negativeTestsPeopleAntibody",
+    "totalTestsPeopleAntigen",
+    "positiveTestsPeopleAntigen",
+    "totalTestsAntigen",
+    "positiveTestsAntigen"
+  ],
+  "sin_poblacion": [
+    "AS",
+    "GU",
+    "MP",
+    "VI"
+  ]
+}
